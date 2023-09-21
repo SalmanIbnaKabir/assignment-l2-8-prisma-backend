@@ -57,7 +57,7 @@ const loginUser = async (data: any): Promise<any> => {
     },
     config.jwt.secret as Secret,
     {
-      expiresIn: process.env.JWT_EXPIRES_IN,
+      expiresIn: config.jwt.expires_in,
     },
   );
 
@@ -67,7 +67,7 @@ const loginUser = async (data: any): Promise<any> => {
       email: isUserExist?.email,
       role: isUserExist?.role,
     },
-    config.jwt.secret as Secret,
+    config.jwt.refresh_secret as Secret,
     {
       expiresIn: config.jwt.refresh_expires_in,
     },

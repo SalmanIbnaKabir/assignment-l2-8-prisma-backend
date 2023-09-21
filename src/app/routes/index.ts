@@ -1,6 +1,8 @@
 import express from 'express';
 import { UserRoutes } from '../modules/user/user.route';
 import { AuthRoute } from '../modules/auth/auth.routes';
+import { ProfileRoutes } from '../modules/auth/profile.route';
+import { CategoryRoutes } from '../modules/category/category.route';
 
 const router = express.Router();
 
@@ -12,6 +14,14 @@ const moduleRoutes = [
   {
     path: '/auth',
     route: AuthRoute,
+  },
+  {
+    path: '/',
+    route: ProfileRoutes,
+  },
+  {
+    path: '/categories',
+    route: CategoryRoutes,
   },
 ];
 

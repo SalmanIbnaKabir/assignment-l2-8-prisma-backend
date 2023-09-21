@@ -7,12 +7,13 @@ import httpStatus from 'http-status';
 
 const createAuthUser = catchAsync(async (req: Request, res: Response) => {
   const result = await AuthService.createAuthUser(req.body);
+  const { password, ...resData } = result;
 
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
     message: 'Users created successfully',
-    data: result,
+    data: resData,
   });
 });
 const loginUser = catchAsync(async (req: Request, res: Response) => {
