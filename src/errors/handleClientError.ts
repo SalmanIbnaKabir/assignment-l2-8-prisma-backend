@@ -22,6 +22,15 @@ const handleClientError = (error: Prisma.PrismaClientKnownRequestError) => {
         message: message ? message : 'something went wrong',
       },
     ];
+  } else if (error.code === 'P2002') {
+    message = (error.meta?.target as string)[0] + ' is Used' || 'Email is used';
+    console.log(message);
+    errors = [
+      {
+        path: '',
+        message: message ? message : 'something went wrong',
+      },
+    ];
   }
 
   return {

@@ -23,11 +23,9 @@ const create = z.object({
     address: z.string({
       required_error: 'address is Required',
     }),
-    profileImg: z
-      .string({
-        required_error: 'profileImage is Required',
-      })
-      .url(),
+    profileImg: z.string({
+      required_error: 'profileImage is Required',
+    }),
   }),
 });
 
