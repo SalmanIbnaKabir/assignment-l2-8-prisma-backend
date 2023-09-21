@@ -52,7 +52,6 @@ const loginUser = async (data: any): Promise<any> => {
   const accessToken = jwthelper.createToken(
     {
       userId: isUserExist?.id,
-      email: isUserExist?.email,
       role: isUserExist?.role,
     },
     config.jwt.secret as Secret,
@@ -64,7 +63,6 @@ const loginUser = async (data: any): Promise<any> => {
   const refreshToken = jwthelper.createToken(
     {
       userId: isUserExist?.id,
-      email: isUserExist?.email,
       role: isUserExist?.role,
     },
     config.jwt.refresh_secret as Secret,
@@ -93,7 +91,7 @@ const refreshToken = async (token: string) => {
 
   const isUserExist = await prisma.user.findUnique({
     where: {
-      email: verifyToken?.email,
+      id: verifyToken?.userId,
     },
   });
   if (!isUserExist) {
@@ -104,7 +102,7 @@ const refreshToken = async (token: string) => {
 
   // step 3 generate new token
   const accessToken = jwthelper.createToken(
-    { id: isUserExist?.id, email: isUserExist?.email, role: isUserExist?.role },
+    { id: isUserExist?.id, role: isUserExist?.role },
     config.jwt.secret as Secret,
     {
       expiresIn: config.jwt.expires_in,
