@@ -1,5 +1,41 @@
 ## Assignment 8 Book Catalog
 
+## Live Server Link: https://book-catalog-prisma-psql.vercel.app
+
+```html
+<div
+  class="postman-run-button"
+  data-postman-action="collection/fork"
+  data-postman-visibility="public"
+  data-postman-var-1="27406965-2de8ace4-c551-4c6f-81ff-ce5e7741b631"
+  data-postman-collection-url="entityId=27406965-2de8ace4-c551-4c6f-81ff-ce5e7741b631&entityType=collection&workspaceId=a64a3aed-a283-4b0a-aaef-08256d53f9dd"
+></div>
+<script type="text/javascript">
+  (function (p, o, s, t, m, a, n) {
+    !p[s] &&
+      (p[s] = function () {
+        (p[t] || (p[t] = [])).push(arguments);
+      });
+    !o.getElementById(s + t) &&
+      o
+        .getElementsByTagName('head')[0]
+        .appendChild(
+          ((n = o.createElement('script')),
+          (n.id = s + t),
+          (n.async = 1),
+          (n.src = m),
+          n),
+        );
+  })(
+    window,
+    document,
+    '_pm',
+    'PostmanRunObject',
+    'https://run.pstmn.io/button.js',
+  );
+</script>
+```
+
 ### USER
 
 - api/v1/auth/signup (POST) public API
@@ -30,6 +66,5 @@
 ### ORDER
 
 - api/v1/orders/create-order (POST) Customer API
-- api/v1/orders/get-all-orders Admin API
-- api/v1/orders (GET)
+- api/v1/orders (GET) if Admin have All Order || If customer have his order
 - api/v1/orders/:orderId (GET) Admin And Customer API

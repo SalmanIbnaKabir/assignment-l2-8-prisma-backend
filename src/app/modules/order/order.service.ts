@@ -60,18 +60,18 @@ const createOrder = async (token: any, data: any): Promise<any> => {
 
 //   get all orders
 
-const getAllOrders = async (): Promise<Order[]> => {
-  const result = await prisma.order.findMany({
-    include: {
-      orderedBooks: {
-        include: {
-          book: true,
-        },
-      },
-    },
-  });
-  return result;
-};
+// const getAllOrders = async (): Promise<Order[]> => {
+//   const result = await prisma.order.findMany({
+//     include: {
+//       orderedBooks: {
+//         include: {
+//           book: true,
+//         },
+//       },
+//     },
+//   });
+//   return result;
+// };
 
 const getSingleOrder = async (token: any): Promise<Order | null> => {
   const { role, userId } = token;
@@ -155,7 +155,7 @@ const getSpecificOrder = async (
 
 export const OrderService = {
   createOrder,
-  getAllOrders,
+  // getAllOrders,
   getSingleOrder,
   getSpecificOrder,
 };

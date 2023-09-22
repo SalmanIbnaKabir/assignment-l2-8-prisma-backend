@@ -4,15 +4,23 @@ import catchAsync from '../../../shared/catchAsync';
 import { AuthService } from './auth.service';
 import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
 
 const createAuthUser = catchAsync(async (req: Request, res: Response) => {
-  const result = await AuthService.createAuthUser(req.body);
+  const result = await AuthService.createAuthUser(req.body)!;
+  if (!result) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      'AuthService.createAuthUser returned null',
+    );
+  }
+
   const { password, ...resData } = result;
 
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Users created successfully',
+    message: 'User created successfully',
     data: resData,
   });
 });
