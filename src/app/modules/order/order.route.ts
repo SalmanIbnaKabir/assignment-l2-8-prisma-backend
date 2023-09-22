@@ -23,6 +23,6 @@ router.get(
   OrderController.getSingleOrder,
 );
 
-// router.get('/',auth(ENUM_USER_ROLE.CUSTOMER),orderController.getSingleOrder)
+// router.get('/',OrderController.getAllOrder)
 
 export const OrderRoutes = router;

@@ -13,7 +13,7 @@ const createOrder = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// const getAllOrders  =  catchAsync(async(req:Request,res:Response)=>{
+// const getAllOrder  =  catchAsync(async(req:Request,res:Response)=>{
 //     const result  = await OrderService.getAllOrders()
 //     res.send({
 //         success: true,
