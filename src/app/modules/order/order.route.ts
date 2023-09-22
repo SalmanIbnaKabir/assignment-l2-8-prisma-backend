@@ -6,9 +6,9 @@ import { OrderController } from './order.controller';
 const router = express.Router();
 
 router.get(
-  '/:id',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
-  OrderController.getSpecificOrder,
+  '/get-all-orders',
+  auth(ENUM_USER_ROLE.ADMIN),
+  OrderController.getAllOrder,
 );
 
 router.post(
@@ -16,13 +16,16 @@ router.post(
   auth(ENUM_USER_ROLE.CUSTOMER),
   OrderController.createOrder,
 );
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+  OrderController.getSpecificOrder,
+);
 
 router.get(
   '/',
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
   OrderController.getSingleOrder,
 );
-
-// router.get('/',OrderController.getAllOrder)
 
 export const OrderRoutes = router;

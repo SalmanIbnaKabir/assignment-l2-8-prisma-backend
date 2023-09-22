@@ -12,17 +12,17 @@ router.post(
 );
 router.get(
   '/',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+
   BookController.getAllBook,
 );
 router.get(
   '/:categoryId/category',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+
   BookController.getBooksByCategoryId,
 );
 router.get(
   '/:id',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+
   BookController.getSingleBook,
 );
 router.patch('/:id', auth(ENUM_USER_ROLE.ADMIN), BookController.updateBook);

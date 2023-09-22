@@ -87,11 +87,14 @@ const getAllBook = async (
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'something went wrong');
   }
+  const totalPage = Math.ceil(count / limit);
+
   return {
     meta: {
       total: count,
       page,
       limit,
+      totalPage,
     },
     data: result,
   };
@@ -124,11 +127,21 @@ const getBooksByCategoryId = async (
     },
   });
 
+  const count = await prisma.book.count({
+    where: {
+      categoryId: {
+        equals: id,
+      },
+    },
+  });
+  const totalPage = Math.ceil(count / limit);
+
   return {
     meta: {
       total,
       page,
       limit,
+      totalPage,
     },
     data: result,
   };

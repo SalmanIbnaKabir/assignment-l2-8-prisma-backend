@@ -12,23 +12,24 @@
 
   ### CATEGORY
 
-- api/v1/categories/create-category (POST)
-- api/v1/categories (GET)
-- api/v1/categories/f7b077e4-5834-4008-9026-da51118c010d (Single GET)
-- api/v1/categories/f7b077e4-5834-4008-9026-da51118c010d (PATCH)
-- api/v1/categories/076dabae-5d88-4152-bca3-e43368a4ce2f (DELETE)
+- api/v1/categories/create-category (POST) Admin API
+- api/v1/categories (GET) Public API
+- api/v1/categories/0af45a6e-22e9-4725-a9b4-98f819f1873c (Single GET) Public API
+- api/v1/categories/0af45a6e-22e9-4725-a9b4-98f819f1873c (PATCH) Admin API
+- api/v1/categories/0af45a6e-22e9-4725-a9b4-98f819f1873c (DELETE) Admin API
 
 ### BOOK
 
-- api/v1/books/create-book (POST)
-- api/v1/books (GET)
-- api/v1/books/:categoryId/category (GET)
-- api/v1/books/:id (GET)
-- api/v1/books/:id (PATCH)
-- api/v1/books/:id (DELETE)
+- api/v1/books/create-book (POST) Admin API
+- api/v1/books (GET) Public API
+- api/v1/books/:categoryId/category (GET) Public API
+- api/v1/books/:id (GET) Public API
+- api/v1/books/:id (PATCH) Admin API
+- api/v1/books/:id (DELETE) Admin API
 
 ### ORDER
 
-- api/v1/orders/create-order (POST)
+- api/v1/orders/create-order (POST) Customer API
+- api/v1/orders/get-all-orders Admin API
 - api/v1/orders (GET)
-- api/v1/orders/:orderId (GET)
+- api/v1/orders/:orderId (GET) Admin And Customer API
