@@ -4,9 +4,9 @@
 
 [API Endpoints in PostMan](https://www.postman.com/interstellar-sunset-813958/workspace/share-with-other/collection/27406965-2de8ace4-c551-4c6f-81ff-ce5e7741b631?action=share&creator=27406965)
 
-##Application Routes:
+## Application Routes:
 
-###User
+### User
 
 - api/v1/auth/signup (POST)
 - api/v1/auth/signin (POST)
