@@ -18,10 +18,10 @@ const createAuthUser = async (data: User): Promise<User | null> => {
   data.password = password;
   const result = await prisma.user.create({
     data,
-    include: {
-      orders: true,
-      reviews: true,
-    },
+    // include: {
+    //   orders: true,
+    //   reviews: true,
+    // },
   });
 
   if (!result) {

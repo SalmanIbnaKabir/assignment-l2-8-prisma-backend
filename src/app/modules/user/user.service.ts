@@ -3,11 +3,20 @@ import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import prisma from '../../../shared/prisma';
 // get all user
-const getAllUser = async (): Promise<User[] | null> => {
+const getAllUser = async (): Promise<Partial<User>[] | null> => {
   const result = await prisma.user.findMany({
-    include: {
-      orders: true,
-      reviews: true,
+    // include: {
+    //   orders: true,
+    //   reviews: true,
+    // },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      contactNo: true,
+      address: true,
+      profileImg: true,
     },
   });
   if (!result) {

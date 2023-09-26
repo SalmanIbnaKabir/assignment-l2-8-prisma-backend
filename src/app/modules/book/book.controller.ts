@@ -9,13 +9,7 @@ import { booksFilterableOptions } from './book.constants';
 
 const getAllBook = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, booksFilterableOptions);
-  const options = pick(req.query, [
-    'limit',
-    'page',
-    'skip',
-    'sortBy',
-    'sortOrder',
-  ]);
+  const options = pick(req.query, ['page', 'size', 'sortBy', 'sortOrder']);
   const result = await BookService.getAllBook(filters, options);
 
   sendResponse(res, {
@@ -29,13 +23,7 @@ const getAllBook = catchAsync(async (req: Request, res: Response) => {
 
 // get books by category id
 const getBooksByCategoryId = catchAsync(async (req: Request, res: Response) => {
-  const options = pick(req.query, [
-    'limit',
-    'page',
-    'skip',
-    'sortBy',
-    'sortOrder',
-  ]);
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
   const result = await BookService.getBooksByCategoryId(
     req.params.categoryId,
     options,

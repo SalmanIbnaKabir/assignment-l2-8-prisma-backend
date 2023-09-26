@@ -118,20 +118,21 @@ const getSpecificOrder = async (
 
   let result: any;
   if (role && role === 'admin') {
-    result = await prisma.order.findMany({
+    result = await prisma.order.findUnique({
       where: {
         id,
       },
       include: {
         orderedBooks: {
-          include: {
-            book: true,
+          select: {
+            bookId: true,
+            quantity: true,
           },
         },
       },
     });
   } else if (role && role === 'customer') {
-    result = await prisma.order.findMany({
+    result = await prisma.order.findUnique({
       where: {
         id,
         userId: {
@@ -140,8 +141,9 @@ const getSpecificOrder = async (
       },
       include: {
         orderedBooks: {
-          include: {
-            book: true,
+          select: {
+            bookId: true,
+            quantity: true,
           },
         },
       },

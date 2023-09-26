@@ -20,9 +20,9 @@ const updateCategory = async (
     where: {
       id,
     },
-    include: {
-      books: true,
-    },
+    // include: {
+    //   books: true,
+    // },
     data,
   });
   return result;
@@ -30,9 +30,9 @@ const updateCategory = async (
 // get all
 const getAllCategory = async (): Promise<Category[] | null> => {
   const result = await prisma.category.findMany({
-    include: {
-      books: true,
-    },
+    // include: {
+    //   books: true,
+    // },
   });
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'something went wrong');

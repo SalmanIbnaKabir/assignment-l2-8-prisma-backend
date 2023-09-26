@@ -22,7 +22,7 @@ const getAllBook = async (
 ): Promise<IGenericResponse<Book[] | null>> => {
   const { search, minPrice, maxPrice, category } = filters;
 
-  const { limit, skip, page } = paginationHelpers.calculatePagination(options);
+  const { size, skip, page } = paginationHelpers.calculatePagination(options);
 
   const andConditions = [];
 
@@ -82,18 +82,18 @@ const getAllBook = async (
       category: true,
     },
     skip,
-    take: limit,
+    take: size,
   });
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'something went wrong');
   }
-  const totalPage = Math.ceil(count / limit);
+  const totalPage = Math.ceil(count / size);
 
   return {
     meta: {
-      total: count,
       page,
-      limit,
+      size,
+      total: count,
       totalPage,
     },
     data: result,
@@ -106,7 +106,7 @@ const getBooksByCategoryId = async (
   id: string,
   options: IPaginationOptions,
 ): Promise<IGenericResponse<Book[] | null>> => {
-  const { limit, skip, page } = paginationHelpers.calculatePagination(options);
+  const { size, skip, page } = paginationHelpers.calculatePagination(options);
   const total = await prisma.book.count({
     where: {
       categoryId: {
@@ -121,7 +121,7 @@ const getBooksByCategoryId = async (
       },
     },
     skip,
-    take: limit,
+    take: size,
     include: {
       category: true,
     },
@@ -134,13 +134,13 @@ const getBooksByCategoryId = async (
       },
     },
   });
-  const totalPage = Math.ceil(count / limit);
+  const totalPage = Math.ceil(count / size);
 
   return {
     meta: {
-      total,
       page,
-      limit,
+      size,
+      total: count,
       totalPage,
     },
     data: result,
@@ -153,9 +153,9 @@ const getSingleBook = async (id: string): Promise<Book | null> => {
     where: {
       id,
     },
-    include: {
-      category: true,
-    },
+    // include: {
+    //   category: true,
+    // },
   });
   return result;
 };
@@ -169,9 +169,9 @@ const updateBook = async (
     where: {
       id,
     },
-    include: {
-      category: true,
-    },
+    // include: {
+    //   category: true,
+    // },
     data,
   });
   return result;
