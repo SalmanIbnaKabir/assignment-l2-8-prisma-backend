@@ -45,8 +45,9 @@ const createOrder = async (token: any, data: any): Promise<any> => {
       },
       include: {
         orderedBooks: {
-          include: {
-            book: true,
+          select: {
+            bookId: true,
+            quantity: true,
           },
         },
       },
@@ -81,8 +82,9 @@ const getSingleOrder = async (token: any): Promise<Order | null> => {
     result = await prisma.order.findMany({
       include: {
         orderedBooks: {
-          include: {
-            book: true,
+          select: {
+            bookId: true,
+            quantity: true,
           },
         },
       },
@@ -96,8 +98,9 @@ const getSingleOrder = async (token: any): Promise<Order | null> => {
       },
       include: {
         orderedBooks: {
-          include: {
-            book: true,
+          select: {
+            bookId: true,
+            quantity: true,
           },
         },
       },

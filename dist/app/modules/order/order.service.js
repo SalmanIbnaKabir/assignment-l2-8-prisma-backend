@@ -49,8 +49,9 @@ const createOrder = (token, data) => __awaiter(void 0, void 0, void 0, function*
             },
             include: {
                 orderedBooks: {
-                    include: {
-                        book: true,
+                    select: {
+                        bookId: true,
+                        quantity: true,
                     },
                 },
             },
@@ -79,8 +80,9 @@ const getSingleOrder = (token) => __awaiter(void 0, void 0, void 0, function* ()
         result = yield prisma_1.default.order.findMany({
             include: {
                 orderedBooks: {
-                    include: {
-                        book: true,
+                    select: {
+                        bookId: true,
+                        quantity: true,
                     },
                 },
             },
@@ -95,8 +97,9 @@ const getSingleOrder = (token) => __awaiter(void 0, void 0, void 0, function* ()
             },
             include: {
                 orderedBooks: {
-                    include: {
-                        book: true,
+                    select: {
+                        bookId: true,
+                        quantity: true,
                     },
                 },
             },
